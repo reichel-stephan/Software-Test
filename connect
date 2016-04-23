@@ -1,0 +1,1 @@
+DSN = "DRIVER={" & IIf(ora, "Microsoft ODBC for Oracle};CONNECTSTRING=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=" & n & ")(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=" & s & ")))", "SQL Server};SERVER=" & n & ";DATABASE=" & s) & ";UID=" & u & ";PWD=" & p & ";"
