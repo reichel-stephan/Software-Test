@@ -1,0 +1,52 @@
+#NoTrayIcon
+#include <Excel.au3>
+#include <Inet.au3>
+#include <MsgBoxConstants.au3>
+
+Const $u="easy-SKB KorrekturUpdate 160414"
+Const $n="SKB-Einzelerfassung"
+const $x=".xls"
+Const $f="Fehler "
+
+const $o="OctoWare®TN"
+
+;update()
+w()
+
+Func w()
+Opt("MustDeclareVars",1)
+Opt("WinTitleMatchMode",2)
+Opt("SendKeyDownDelay",0)
+Opt("SendKeyDelay",50)
+
+    ; Retrieve a list of window handles.
+ ;   Local $aList = WinList("[REGEXPTITLE:(?i)(*" & $o & "*)]")
+    Local $t = WinList()
+
+;[REGEXPTITLE:(?i)(.*SciTE.*|.*Internet Explorer.*)]
+
+    ; Loop through the array displaying only visable windows with a title.
+
+Local $a[$t[0][0]+1][3]
+$a[0][0]=$t[0][0]
+For $i = 1 To $t[0][0]
+;	MsgBox(0,"", $i)
+	$a[$i][0]=$t[$i][0]
+	$a[$i][1]=$t[$i][1]
+	$a[$i][2]=_WinAPI_GetParent($t[$i][1])
+;	_WinAPI_GetParent($t[$i][2]))
+;        If $aList[$i][0] <> "" And BitAND(WinGetState($aList[$i][1]), 2) Then
+;            MsgBox($MB_SYSTEMMODAL, "", "Title: " & $aList[$i][0] & @CRLF & "Handle: " & $aList[$i][1])
+;        EndIf
+;    Next
+
+;    For $i = 1 To $t[0][0]
+;        If $aList[$i][0] <> "" And BitAND(WinGetState($aList[$i][1]), 2) Then
+;            MsgBox($MB_SYSTEMMODAL, "", "Title: " & $aList[$i][0] & @CRLF & "Handle: " & $aList[$i][1])
+;        EndIf
+    Next
+
+
+_ArrayDisplay($a)
+
+EndFunc
